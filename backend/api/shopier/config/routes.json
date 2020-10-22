@@ -1,0 +1,9 @@
+{
+  "routes": [
+    {
+      "method": "POST",
+      "path": "/shopier",
+      "handler": "shopier.index"
+    }
+  ]
+}

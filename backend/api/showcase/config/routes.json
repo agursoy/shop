@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/showcase",
+      "handler": "showcase.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/showcase",
+      "handler": "showcase.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/showcase",
+      "handler": "showcase.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
