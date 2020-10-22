@@ -1,0 +1,10 @@
+version: '3'
+services:
+  strapi:
+    build: ./backend
+    ports:
+      - "1337:1337"
+  nuxt:
+    build: ./frontend
+    ports:
+      - "80:80"

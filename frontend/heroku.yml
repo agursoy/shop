@@ -1,0 +1,8 @@
+build:
+  docker:
+    web: Dockerfile
+  config:
+    NODE_ENV: production
+    SHOP_NAME: $SHOP_NAME
+    BACKGROUND_COLOR: $BACKGROUND_COLOR
+    API_URL: $API_URL
