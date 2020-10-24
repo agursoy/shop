@@ -1,21 +1,20 @@
 module.exports = ({ env }) => ({
-  "defaultConnection": "default",
-  "connections": {
-    "default": {
-      "connector": "mongoose",
-      "settings": {
-        "client": "mongo",
-        "uri": `${process.env.DATABASE_URI || ''}`,
-        "host": `${process.env.DATABASE_HOST || 'localhost'}`,
-        "port": `${process.env.DATABASE_PORT || 27017}`,
-        "database": `${process.env.DATABASE_NAME || 'production'}`,
-        "username": `${process.env.DATABASE_USERNAME || ''}`,
-        "password": `${process.env.DATABASE_PASSWORD || ''}`
+  defaultConnection: 'default',
+  connections: {
+    default: {
+      connector: 'mongoose',
+      settings: {
+        host: env('DATABASE_HOST', ''),
+        srv: env.bool('DATABASE_SRV', true),
+        port: env.int('DATABASE_PORT', 27017),
+        database: env('DATABASE_NAME', ''),
+        username: env('DATABASE_USERNAME', ''),
+        password: env('DATABASE_PASSWORD', ''),
       },
-      "options": {
-        "authenticationDatabase": `${process.env.DATABASE_NAME || 'production'}`,
-        "ssl": false
-      }
-    }
-  }
+      options: {
+        authenticationDatabase: env('AUTHENTICATION_DATABASE', null),
+        ssl: env.bool('DATABASE_SSL', true),
+      },
+    },
+  },
 });
