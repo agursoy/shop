@@ -43,7 +43,7 @@
             <li class="dropdown">
               <a class="py-2 px-4">...</a>
               <div
-                class="dropdown-menu top-0 md:absolute hidden h-auto flex md:pt-12"
+                class="dropdown-menu z-10 top-0 md:absolute hidden h-auto flex md:pt-12"
               >
                 <ul class="block w-full bg-white shadow md:p-1">
                   <li class="py-1">

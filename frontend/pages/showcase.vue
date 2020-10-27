@@ -5,10 +5,6 @@
     <div class="f-center w-full">
       <img src="~/static/logo.svg" />
     </div>
-    <div class="f-center w-full pb-6 pt-2 text-lg text-black flex-wrap">
-      <span class="font-semibold">"Mutlu Müşterilerine"</span> &nbsp; Göz Atarak
-      Başlayın
-    </div>
     <div class="f-center">
       <div class="w-5/6 md:w-1/4">
         <GameCardsStack

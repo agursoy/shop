@@ -21,17 +21,90 @@ export default {
   head: {
     title: process.env.SHOP_NAME,
     meta: [
+      { charset: "utf-8" },
       {
-        charset: "utf-8",
+        hid: "description",
+        name: "description",
+        content: process.env.SHOP_DESCRIPTION,
       },
       {
         name: "viewport",
-        content: "width=device-width, initial-scale=1",
+        content:
+          "width=device-width, initial-scale=1, maximum-scale=2.0, user-scalable=0",
+      },
+      {
+        name: "msapplication-TileImage",
+        content: "/icon-192x192.png",
       },
       {
         hid: "description",
         name: "description",
         content: process.env.SHOP_DESCRIPTION,
+      },
+      {
+        property: "og:url",
+        hid: "og:url",
+        content: process.env.SHOP_URL,
+      },
+      {
+        property: "og:type",
+        hid: "og:type",
+        content: "website",
+      },
+      {
+        property: "og:title",
+        hid: "og:title",
+        content: process.env.SHOP_NAME,
+      },
+      {
+        property: "og:description",
+        hid: "og:description",
+        content: process.env.SHOP_DESCRIPTION,
+      },
+      {
+        property: "og:image",
+        hid: "og:image",
+        content: `${process.env.SHOP_URL}/share.jpg`,
+      },
+      {
+        property: "og:locale",
+        hid: "og:locale",
+        content: "tr_TR",
+      },
+      {
+        property: "og:site_name",
+        hid: "og:site_name",
+        content: process.env.SHOP_NAME,
+      },
+      {
+        hid: "twitter:card",
+        name: "twitter:card",
+        content: "summary_large_image",
+      },
+      {
+        hid: "twitter:creator",
+        name: "twitter:creator",
+        content: process.env.SHOP_TWITTER,
+      },
+      {
+        hid: "twitter:title",
+        name: "twitter:title",
+        content: process.env.SHOP_NAME,
+      },
+      {
+        hid: "twitter:description",
+        name: "twitter:description",
+        content: process.env.SHOP_DESCRIPTION,
+      },
+      {
+        hid: "twitter:image",
+        name: "twitter:image",
+        content: `${process.env.SHOP_URL}/share.jpg`,
+      },
+      {
+        hid: "twitter:site",
+        name: "twitter:site",
+        content: process.env.SHOP_TWITTER,
       },
     ],
     link: [
@@ -50,7 +123,7 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: [],
+  plugins: [{ src: "~/plugins/ga.js", ssr: false }],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
