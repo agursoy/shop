@@ -37,11 +37,6 @@ export default {
         content: "/icon-192x192.png",
       },
       {
-        hid: "description",
-        name: "description",
-        content: process.env.SHOP_DESCRIPTION,
-      },
-      {
         property: "og:url",
         hid: "og:url",
         content: process.env.SHOP_URL,
