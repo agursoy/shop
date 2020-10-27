@@ -1,29 +1,19 @@
 import cookieparser from "cookieparser";
-import Cookies from 'js-cookie'
-
-export const state = () => ({
-  redirectShowcase: true
-})
 
 export const actions = {
-  nuxtServerInit({commit, state}, {ssrContext}) {
+  nuxtServerInit({ commit, state }, { ssrContext }) {
     if (process.server) {
-      let cart = []
-      let redirectShowcase = true
-      if (ssrContext && ssrContext.req && ssrContext.req.headers && ssrContext.req.headers.cookie) {
-        const parsed = cookieparser.parse(ssrContext.req.headers.cookie)
-        cart = (parsed.cart && JSON.parse(parsed.cart)) || []
-        redirectShowcase = (parsed.redirectShowcase && JSON.parse(parsed.redirectShowcase)) || false
+      let cart = [];
+      if (
+        ssrContext &&
+        ssrContext.req &&
+        ssrContext.req.headers &&
+        ssrContext.req.headers.cookie
+      ) {
+        const parsed = cookieparser.parse(ssrContext.req.headers.cookie);
+        cart = (parsed.cart && JSON.parse(parsed.cart)) || [];
       }
-      commit('cart/setItems', cart)
-      commit('redirectShowcase', redirectShowcase)
+      commit("cart/setItems", cart);
     }
   },
-}
-
-export const mutations = {
-  redirectShowcase(state, status) {
-    state.redirectShowcase = status
-    Cookies.set('redirectShowcase', status)
-  },
-}
+};

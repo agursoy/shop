@@ -12,12 +12,6 @@ import Slider from '~/components/Slider'
 import Buttons from '~/components/Buttons'
 
 export default {
-  middleware({ store, redirect }) {
-    const redirectShowcase = !!store.state.redirectShowcase
-    if (redirectShowcase) {
-      return redirect('/showcase')
-    }
-  },
   data() {
     return {
       products: [],

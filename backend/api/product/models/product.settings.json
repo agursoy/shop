@@ -55,6 +55,9 @@
     },
     "published_at": {
       "type": "datetime"
+    },
+    "finished_stock": {
+      "type": "boolean"
     }
   }
 }
