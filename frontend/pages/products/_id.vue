@@ -1,6 +1,6 @@
 <template>
   <div v-if="this.product !== null">
-    <section class="relative py-20">
+    <section class="relative py-10 md:py-20">
       <div class="container mx-auto px-4">
         <div class="items-center flex flex-wrap">
           <div class="w-full md:w-4/12 ml-auto mr-auto px-4 pb-5">
