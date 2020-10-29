@@ -31,7 +31,7 @@
         <thead>
           <tr>
             <th
-              class="rounded-l-lg pl-1 py-2 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
+              class="hidden md:table-cell rounded-l-lg pl-1 py-2 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
             >
               Ürün
             </th>
@@ -59,10 +59,10 @@
         </thead>
         <tbody>
           <tr v-for="item in items">
-            <td class="border-b border-gray-200 text-sm">
-              <p class="text-gray-900 whitespace-no-wrap">
+            <td class="hidden md:table-cell border-b border-gray-200 text-sm">
+              <span class="text-gray-900 whitespace-no-wrap">
                 {{ get(item, "title") }}
-              </p>
+              </span>
             </td>
             <td class="border-b border-gray-200 text-sm">
               <img
@@ -310,6 +310,9 @@
         >
           Alışverişi Tamamla ({{ price }} TL)
         </button>
+        <div class="pt-2 pr-5 text-xs text-center">
+          Ödeme için Shopier adresine yönlendirileceksiniz..
+        </div>
       </div>
     </div>
   </div>
