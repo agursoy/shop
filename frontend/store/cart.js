@@ -1,4 +1,5 @@
 import Cookies from "js-cookie";
+import { get } from "~/utils/get";
 
 export const state = () => ({
   items: [],
@@ -17,27 +18,27 @@ export const mutations = {
     copy.options = [];
     copy.image = [
       {
-        url: item.image[0].url,
+        url: get(item, "image.0.url"),
         formats: {
           large: {
-            width: item.image[0].formats.large.width,
-            height: item.image[0].formats.large.height,
-            url: item.image[0].formats.large.url,
+            width: get(item, "image.0.formats.large.width"),
+            height: get(item, "image.0.formats.large.height"),
+            url: get(item, "image.0.formats.large.url"),
           },
           medium: {
-            width: item.image[0].formats.medium.width,
-            height: item.image[0].formats.medium.height,
-            url: item.image[0].formats.medium.url,
+            width: get(item, "image.0.formats.medium.width"),
+            height: get(item, "image.0.formats.medium.height"),
+            url: get(item, "image.0.formats.medium.url"),
           },
           small: {
-            width: item.image[0].formats.small.width,
-            height: item.image[0].formats.small.height,
-            url: item.image[0].formats.small.url,
+            width: get(item, "image.0.formats.small.width"),
+            height: get(item, "image.0.formats.small.height"),
+            url: get(item, "image.0.formats.small.url"),
           },
           thumbnail: {
-            width: item.image[0].formats.thumbnail.width,
-            height: item.image[0].formats.thumbnail.height,
-            url: item.image[0].formats.thumbnail.url,
+            width: get(item, "image.0.formats.thumbnail.width"),
+            height: get(item, "image.0.formats.thumbnail.height"),
+            url: get(item, "image.0.formats.thumbnail.url"),
           },
         },
       },
