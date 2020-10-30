@@ -67,8 +67,10 @@
             <td class="border-b border-gray-200 text-sm">
               <img
                 class="px-1 py-1 w-48 h-auto"
-                :src="`${getStrapiMedia(
-                  get(item, 'image.0..formats.large.url', '')
+                :src="`${get(
+                  item,
+                  'image.0..formats.large.url',
+                  get(item, 'image.0..formats.small.url', '')
                 )}`"
               />
             </td>
@@ -321,7 +323,6 @@
 <script>
 import { mapGetters, mapMutations } from "vuex";
 import { get } from "~/utils/get";
-import { getStrapiMedia } from "~/utils/medias";
 
 export default {
   data() {
@@ -371,7 +372,6 @@ export default {
       addToCart: "cart/add",
       removeFromCart: "cart/remove",
     }),
-    getStrapiMedia,
     get,
     async goShopier() {
       let isValid = true;

@@ -9,7 +9,7 @@
                 <img
                   alt="..."
                   class="max-w-full rounded-lg shadow-lg"
-                  :src="getStrapiMedia(get(activeImage, 'formats.small.url'))"
+                  :src="get(activeImage, 'formats.small.url')"
                 />
               </div>
             </div>
@@ -20,7 +20,11 @@
                   :key="key"
                   alt="..."
                   class="flex-1 max-w-full rounded-lg shadow-lg mr-2 hover:grow hover:shadow-lg"
-                  :src="`${getStrapiMedia(get(image, 'formats.small.url'))}`"
+                  :src="`${get(
+                    image,
+                    'formats.large.url',
+                    get(image, 'formats.small.url')
+                  )}`"
                   @click="activeImage = image"
                 />
               </div>
@@ -136,7 +140,6 @@
 
 <script>
 import { mapMutations } from "vuex";
-import { getStrapiMedia } from "~/utils/medias";
 import { get } from "~/utils/get";
 
 export default {
@@ -185,7 +188,6 @@ export default {
         this.$toast.success("Sepete Eklendi");
       }
     },
-    getStrapiMedia,
     get,
   },
 };

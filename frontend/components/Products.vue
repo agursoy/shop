@@ -24,7 +24,11 @@
             <nuxt-link :to="`/products/${get(product, 'slug', '')}`">
               <img
                 class="hover:grow hover:shadow-lg"
-                :src="`${getStrapiMedia(get(product, 'image.0.formats', ''))}`"
+                :src="`${get(
+                  product,
+                  'image.0.formats.large.url',
+                  get(product, 'image.0.formats.small.url')
+                )}`"
               />
               <div class="text-center pt-3 flex items-center justify-center">
                 <p class="text-gray-900">{{ get(product, "title", "") }}</p>
@@ -39,7 +43,6 @@
 </template>
 
 <script>
-import { getStrapiMedia } from "~/utils/medias";
 import { get } from "~/utils/get";
 
 export default {
@@ -49,7 +52,6 @@ export default {
     storeUrl: String,
   },
   methods: {
-    getStrapiMedia,
     get,
   },
 };

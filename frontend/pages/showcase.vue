@@ -32,7 +32,6 @@
 
 <script>
 import GameCardsStack from "~/components/card/GameCardStack";
-import { getStrapiMedia } from "~/utils/medias";
 import { get } from "~/utils/get";
 
 export default {
@@ -54,12 +53,11 @@ export default {
   },
   async mounted() {
     const showcase = await this.$strapi.find("showcase");
-    console.log(showcase);
     const cards = get(showcase, "showcase_image", []).map((item, index) => {
       return {
         key: index,
         title: item.title,
-        image: getStrapiMedia(item.url),
+        image: item.url,
       };
     });
     this.visibleCards = JSON.parse(JSON.stringify(cards));
