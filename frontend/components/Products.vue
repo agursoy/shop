@@ -9,7 +9,7 @@
               class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-3"
             >
               <a
-                class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl"
+                class="font-serif uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl"
                 href="#"
               >
                 Ürünler
@@ -19,11 +19,11 @@
           <div
             v-for="(product, key) in products"
             :key="key"
-            class="w-full md:w-1/3 p-6 flex flex-col"
+            class="w-full md:w-1/3 p-6 flex flex-col items-center"
           >
             <nuxt-link :to="`/products/${get(product, 'slug', '')}`">
               <img
-                class="hover:grow hover:shadow-lg"
+                class="hover:grow hover:shadow-lg h-46 md:h-56 object-scale-down"
                 :src="`${get(
                   product,
                   'image.0.formats.large.url',

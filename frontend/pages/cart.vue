@@ -66,7 +66,7 @@
             </td>
             <td class="border-b border-gray-200 text-sm">
               <img
-                class="px-1 py-1 w-48 h-auto"
+                class="px-1 py-1 w-48 h-32 object-cover"
                 :src="`${get(
                   item,
                   'image.0..formats.large.url',

@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        arapey: ["arapey", "sans-serif"],
+        unna: ["unna", "sans-serif"],
       },
     },
   },

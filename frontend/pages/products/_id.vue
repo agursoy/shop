@@ -4,17 +4,17 @@
       <div class="container mx-auto px-4">
         <div class="items-center flex flex-wrap">
           <div class="w-full md:w-4/12 ml-auto mr-auto px-4 pb-5">
-            <div class="flex bg-gray-200">
-              <div class="flex-initial">
+            <div class="flex justify-content-center">
+              <div>
                 <img
                   alt="..."
-                  class="max-w-full rounded-lg shadow-lg"
+                  class="h-64 max-w-full rounded-lg shadow-lg"
                   :src="get(activeImage, 'formats.small.url')"
                 />
               </div>
             </div>
             <div v-if="get(product, 'image', []).length > 1" class="flex pt-5">
-              <div class="flex w-1/5">
+              <div class="h-12 flex w-1/5">
                 <img
                   v-for="(image, key) in get(product, 'image', [])"
                   :key="key"
@@ -68,7 +68,7 @@
                       </div>
                       <div class="relative">
                         <select
-                          v-model="customField.value"
+                          v-model="customField.value.trim()"
                           class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         >
                           <option :value="''" disabled selected>
@@ -178,7 +178,7 @@ export default {
     }),
     validateAndAddToCart(item) {
       this.get(item, "Custom_field", []).forEach((field) => {
-        if (field.required === true && field.value === "") {
+        if (field.required === true && field.value.trim() === "") {
           this.showValidMessage = true;
         }
       });
