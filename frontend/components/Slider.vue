@@ -119,7 +119,7 @@ export default {
   data() {
     return {
       sliders: [],
-      sliderActive: 1,
+      sliderActive: 0,
       error: null,
     };
   },

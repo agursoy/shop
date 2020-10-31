@@ -5,7 +5,8 @@
     </div>
     <div v-else>
       <div
-        class="container mx-auto flex flex-wrap items-center justify-center p-6"
+        style="background-color: #faebd738"
+        class="container mx-auto flex flex-wrap items-center justify-center p-6 mt-5 md:mt-10"
       >
         <nuxt-link
           v-for="(category, key) in categories"
@@ -24,18 +25,9 @@
 import { get } from "~/utils/get";
 
 export default {
-  data() {
-    return {
-      categories: [],
-      error: null,
-    };
-  },
-  async mounted() {
-    try {
-      this.categories = await this.$strapi.find("categories");
-    } catch (error) {
-      this.error = error;
-    }
+  props: {
+    categories: Array,
+    error: Object,
   },
   methods: {
     get,

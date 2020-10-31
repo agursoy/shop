@@ -35,10 +35,6 @@
       "type": "uid",
       "targetField": "title"
     },
-    "categories": {
-      "collection": "category",
-      "via": "products"
-    },
     "Custom_field": {
       "type": "component",
       "repeatable": true,
@@ -58,6 +54,9 @@
     },
     "finished_stock": {
       "type": "boolean"
+    },
+    "categories": {
+      "collection": "category"
     }
   }
 }

@@ -16,10 +16,8 @@
       "type": "uid",
       "targetField": "name"
     },
-    "products": {
-      "via": "categories",
-      "collection": "product",
-      "dominant": true
+    "featured": {
+      "collection": "product"
     }
   }
 }
