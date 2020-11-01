@@ -3,9 +3,7 @@
     class="border-b py-8 px-5 md:px-8 not-italic leading-8 md:leading-10"
   >
     <div class="container max-w-5xl mx-auto m-8">
-      <h1
-        class="w-full my-2 text-3xl font-bold leading-tight text-center text-gray-800"
-      >
+      <h1 class="w-full my-2 text-3xl leading-tight text-center text-gray-800">
         ŞUBELERİMİZ
       </h1>
 
@@ -23,7 +21,7 @@
       <div class="flex flex-wrap flex-col-reverse sm:flex-row">
         <div class="w-full sm:w-1/2 p-6 mt-3">
           <div class="align-middle">
-            <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">
+            <h3 class="text-3xl text-gray-800 leading-none mb-3">
               SOSYAL MEDYADA BİZ
             </h3>
             <p class="text-gray-600 mb-8 text-xl">
@@ -59,7 +57,7 @@
 
       <div class="flex flex-wrap">
         <div class="w-5/6 sm:w-1/2 p-6 text-xl">
-          <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">
+          <h3 class="text-3xl text-gray-800 leading-none mb-3">
             MAĞAZALARDA BİZ
           </h3>
 

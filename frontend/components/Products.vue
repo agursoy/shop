@@ -3,7 +3,7 @@
     <div>
       <div v-if="error">{ error }</div>
       <div v-else>
-        <div class="container mx-auto flex items-center flex-wrap pb-12">
+        <div class="container mx-auto flex items-center flex-wrap">
           <div
             v-for="(product, key) in products"
             :key="key"
@@ -37,7 +37,7 @@ export default {
   props: {
     products: Array,
     error: Object,
-    storeUrl: String,
+    apiUrl: String,
   },
   methods: {
     get,

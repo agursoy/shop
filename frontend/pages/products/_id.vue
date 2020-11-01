@@ -42,6 +42,15 @@
                 <div class="mt-4 text-lg leading-relaxed text-gray-600">
                   <span class="text-red-400"> Stokta tükenmiştir. </span>
                 </div>
+                <div v-if="get(product, 'ask_expert')">
+                  <button
+                    v-if="product.status === 'published'"
+                    class="mt-4 bg-white border border-gray-200 d hover:shadow-lg text-gray-700 font-semibold py-2 px-4 rounded shadow"
+                    @click="askExpert(product)"
+                  >
+                    Satıcıya Sor
+                  </button>
+                </div>
               </div>
               <div v-else>
                 <div class="mt-6">
@@ -171,11 +180,138 @@ export default {
       this.error = error;
     }
   },
+  head() {
+    return {
+      title: this.headTitle
+        ? `${this._substringField(this.headTitle)} | TRT Dinle`
+        : "TRT Dinle",
+      link: [
+        {
+          rel: "image_src",
+          href: this.headImage
+            ? this._image(this.headImage, { w: 768, q: 60 })
+            : process.env.base_url + socialImage,
+        },
+      ],
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          content: this.headDescription,
+        },
+        {
+          property: "og:url",
+          hid: "og:url",
+          content: `${process.env.base_url}${this.$route.fullPath}`,
+        },
+        {
+          property: "og:type",
+          hid: "og:type",
+          content: "website",
+        },
+        {
+          property: "og:title",
+          hid: "og:title",
+          content: this.headTitle
+            ? this._substringField(this.headTitle, 65)
+            : "TRT Dinle",
+        },
+        {
+          property: "og:description",
+          hid: "og:description",
+          content: this.headDescription,
+        },
+        {
+          property: "og:image",
+          hid: "og:image",
+          content: this.headImage
+            ? this._image(this.headImage, { w: 768, q: 60 })
+            : process.env.base_url + socialImage,
+        },
+        {
+          property: "og:locale",
+          hid: "og:locale",
+          content: "tr_TR",
+        },
+        {
+          property: "og:site_name",
+          hid: "og:site_name",
+          content: "TRT Dinle",
+        },
+        {
+          name: "twitter:card",
+          hid: "twitter:card",
+          content: "summary_large_image",
+        },
+        {
+          name: "twitter:creator",
+          hid: "twitter:creator",
+          content: "@trtdinle",
+        },
+        {
+          name: "twitter:title",
+          hid: "twitter:title",
+          content: this.headTitle
+            ? this._substringField(this.headTitle, 65)
+            : "TRT Dinle",
+        },
+        {
+          name: "twitter:description",
+          hid: "twitter:description",
+          content: this.headDescription,
+        },
+        {
+          name: "twitter:site",
+          hid: "twitter:site",
+          content: "@trtdinle",
+        },
+        {
+          name: "twitter:image",
+          hid: "twitter:image",
+          content: this.headImage
+            ? this._image(this.headImage, { w: 768, q: 60 })
+            : process.env.base_url + socialImage,
+        },
+      ],
+    };
+  },
   methods: {
     ...mapMutations({
       addToCart: "cart/add",
       removeFromCart: "cart/remove",
     }),
+    askExpert(product) {
+      console.log(product);
+      this.$nextTick(() => {
+        const image = this.get(product, "image.0.formats.small.url");
+
+        if (false) {
+          const title = this.get(product, "title", "Image");
+          window.$crisp.push([
+            "do",
+            "message:send",
+            [
+              "file",
+              {
+                name: title,
+                url: image,
+                type: "image/jpg",
+              },
+            ],
+          ]);
+        } else {
+          const url = `${process.env.shopUrl}/${this.get(product, "slug")}`;
+          window.$crisp.push(["do", "message:send", ["text", url]]);
+        }
+
+        window.$crisp.push([
+          "do",
+          "message:send",
+          ["text", "Bu ürün hakkında bilgi almak istiyorum."],
+        ]);
+        window.$crisp.push(["do", "chat:open"]);
+      });
+    },
     validateAndAddToCart(item) {
       this.get(item, "Custom_field", []).forEach((field) => {
         if (field.required === true && field.value.trim() === "") {

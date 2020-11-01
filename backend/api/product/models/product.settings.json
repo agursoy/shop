@@ -57,6 +57,9 @@
     },
     "categories": {
       "collection": "category"
+    },
+    "ask_expert": {
+      "type": "boolean"
     }
   }
 }

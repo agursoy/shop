@@ -118,7 +118,10 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: [{ src: "~/plugins/ga.js", ssr: false }],
+  plugins: [
+    { src: "~/plugins/ga.js", ssr: false },
+    { src: "~/plugins/crisp.js", ssr: false },
+  ],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -145,9 +148,12 @@ export default {
     entities: ["products", "categories"],
   },
   env: {
-    storeUrl: process.env.STORE_URL || "http://localhost:1337",
+    apiUrl: process.env.API_URL || "http://localhost:1337",
     shopName: process.env.SHOP_NAME || "",
+    shopUrl: process.env.SHOP_URL || "",
     backgroundColor: process.env.BACKGROUND_COLOR,
+    crisp: process.env.CRIPS,
+    googleAnalytics: process.env.GOOGLE_ANALYTICS,
   },
   /*
    ** Build configuration

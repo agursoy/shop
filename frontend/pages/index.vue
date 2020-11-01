@@ -5,11 +5,15 @@
     <div v-for="(category, key) in categories" :key="key">
       <div v-if="get(category, 'featured.length', 0) > 0">
         <Heading :text="get(category, 'name')" />
-        <Products
-          :products="get(category, 'featured', [])"
-          :error="error"
-          :store-url="storeUrl"
-        />
+        <Products :products="get(category, 'featured', [])" :error="error" />
+        <div class="w-full flex justify-center pb-2">
+          <nuxt-link
+            :to="`/categories/${get(category, 'slug', '')}`"
+            class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 ml-2 border border-gray-400 rounded shadow m-1"
+          >
+            Tümünü Gör
+          </nuxt-link>
+        </div>
       </div>
     </div>
   </div>
@@ -32,7 +36,7 @@ export default {
   data() {
     return {
       categories: [],
-      storeUrl: process.env.storeUrl,
+      apiUrl: process.env.apiUrl,
       error: null,
     };
   },
