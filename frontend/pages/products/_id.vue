@@ -180,101 +180,6 @@ export default {
       this.error = error;
     }
   },
-  head() {
-    return {
-      title: this.headTitle
-        ? `${this._substringField(this.headTitle)} | TRT Dinle`
-        : "TRT Dinle",
-      link: [
-        {
-          rel: "image_src",
-          href: this.headImage
-            ? this._image(this.headImage, { w: 768, q: 60 })
-            : process.env.base_url + socialImage,
-        },
-      ],
-      meta: [
-        {
-          hid: "description",
-          name: "description",
-          content: this.headDescription,
-        },
-        {
-          property: "og:url",
-          hid: "og:url",
-          content: `${process.env.base_url}${this.$route.fullPath}`,
-        },
-        {
-          property: "og:type",
-          hid: "og:type",
-          content: "website",
-        },
-        {
-          property: "og:title",
-          hid: "og:title",
-          content: this.headTitle
-            ? this._substringField(this.headTitle, 65)
-            : "TRT Dinle",
-        },
-        {
-          property: "og:description",
-          hid: "og:description",
-          content: this.headDescription,
-        },
-        {
-          property: "og:image",
-          hid: "og:image",
-          content: this.headImage
-            ? this._image(this.headImage, { w: 768, q: 60 })
-            : process.env.base_url + socialImage,
-        },
-        {
-          property: "og:locale",
-          hid: "og:locale",
-          content: "tr_TR",
-        },
-        {
-          property: "og:site_name",
-          hid: "og:site_name",
-          content: "TRT Dinle",
-        },
-        {
-          name: "twitter:card",
-          hid: "twitter:card",
-          content: "summary_large_image",
-        },
-        {
-          name: "twitter:creator",
-          hid: "twitter:creator",
-          content: "@trtdinle",
-        },
-        {
-          name: "twitter:title",
-          hid: "twitter:title",
-          content: this.headTitle
-            ? this._substringField(this.headTitle, 65)
-            : "TRT Dinle",
-        },
-        {
-          name: "twitter:description",
-          hid: "twitter:description",
-          content: this.headDescription,
-        },
-        {
-          name: "twitter:site",
-          hid: "twitter:site",
-          content: "@trtdinle",
-        },
-        {
-          name: "twitter:image",
-          hid: "twitter:image",
-          content: this.headImage
-            ? this._image(this.headImage, { w: 768, q: 60 })
-            : process.env.base_url + socialImage,
-        },
-      ],
-    };
-  },
   methods: {
     ...mapMutations({
       addToCart: "cart/add",
@@ -285,7 +190,7 @@ export default {
       this.$nextTick(() => {
         const image = this.get(product, "image.0.formats.small.url");
 
-        if (false) {
+        if (image) {
           const title = this.get(product, "title", "Image");
           window.$crisp.push([
             "do",

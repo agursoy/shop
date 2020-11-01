@@ -17,9 +17,9 @@
               aria-hidden="true"
               :value="key"
             />
-            <div class="carousel-item absolute opacity-0" style="height: 50vh">
+            <div class="carousel-item absolute opacity-0">
               <div
-                class="block h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-right max-w-full shadow-lg"
+                class="block h-32 md:h-64 w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-right max-w-full shadow-lg"
                 :style="{
                   'background-image': `url(${get(
                     slide,
