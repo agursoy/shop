@@ -25,7 +25,32 @@
                     'formats.large.url',
                     get(image, 'formats.small.url')
                   )}`"
-                  @click="activeImage = image"
+                  @click="selectImage(image)"
+                />
+              </div>
+            </div>
+            <div v-if="get(product, 'customer_photos', []).length > 0">
+              <p
+                class="py-4 tracking-wide no-underline hover:no-underline font-bold text-gray-600 text-xl"
+              >
+                Mutlu Müşteriler
+              </p>
+              <div class="h-auto flex w-2/12">
+                <img
+                  v-for="(customers, key) in get(
+                    product,
+                    'customer_photos',
+                    []
+                  )"
+                  :key="key"
+                  alt="..."
+                  class="object-cover flex-1 max-w-full rounded-lg shadow-lg mr-2 hover:grow hover:shadow-lg"
+                  :src="`${get(
+                    customers,
+                    'formats.large.url',
+                    get(customers, 'formats.small.url')
+                  )}`"
+                  @click="selectImage(customers)"
                 />
               </div>
             </div>
@@ -152,6 +177,16 @@ import { mapMutations } from "vuex";
 import { get } from "~/utils/get";
 
 export default {
+  async fetch() {
+    try {
+      this.product = await this.$strapi.$products.findOne(
+        this.$route.params.id
+      );
+      this.activeImage = this.get(this.product.image, ".0.", null);
+    } catch (error) {
+      this.error = error;
+    }
+  },
   data() {
     return {
       product: null,
@@ -170,21 +205,24 @@ export default {
       deep: true,
     },
   },
-  async fetch() {
-    try {
-      this.product = await this.$strapi.$products.findOne(
-        this.$route.params.id
-      );
-      this.activeImage = this.get(this.product.image, ".0.", null);
-    } catch (error) {
-      this.error = error;
-    }
-  },
   methods: {
     ...mapMutations({
       addToCart: "cart/add",
       removeFromCart: "cart/remove",
     }),
+    scrollToTop() {
+      const c = document.documentElement.scrollTop || document.body.scrollTop;
+      if (c > 0) {
+        window.requestAnimationFrame(this.scrollToTop);
+        window.scrollTo(0, c - c / 20);
+      }
+    },
+    selectImage(image) {
+      this.activeImage = image;
+      this.$nextTick(() => {
+        this.scrollToTop();
+      });
+    },
     askExpert(product) {
       console.log(product);
       this.$nextTick(() => {
