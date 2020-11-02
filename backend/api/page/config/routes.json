@@ -25,6 +25,14 @@
       }
     },
     {
+      "method": "GET",
+      "path": "/pages/findPages",
+      "handler": "page.findPages",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "POST",
       "path": "/pages",
       "handler": "page.create",

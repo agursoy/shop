@@ -5,13 +5,4 @@
  * to customize this model
  */
 
-module.exports = {
-  /**
-   * Promise to fetch all records
-   *
-   * @return {Promise}
-   */
-  find(params, populate) {
-    return strapi.query('pages').find(params, populate);
-  },
-};
+module.exports = {};
