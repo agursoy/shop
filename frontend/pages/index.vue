@@ -3,7 +3,7 @@
     <Slider />
     <Buttons :categories="categories" :error="error" />
     <div v-for="(category, key) in categories" :key="key">
-      <div v-if="get(category, 'featured.length', 0) > 0">
+      <div v-if="get(category, 'featured.length', 0) > 0" class="mt-2">
         <Heading :text="get(category, 'name')" />
         <Products :products="get(category, 'featured', [])" :error="error" />
         <div class="w-full flex justify-center pb-2">

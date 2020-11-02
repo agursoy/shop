@@ -8,18 +8,18 @@
               <div>
                 <img
                   alt="..."
-                  class="h-64 max-w-full rounded-lg shadow-lg"
+                  class="h-auto max-w-full rounded-lg shadow-lg"
                   :src="get(activeImage, 'formats.small.url')"
                 />
               </div>
             </div>
             <div v-if="get(product, 'image', []).length > 1" class="flex pt-5">
-              <div class="h-12 flex w-1/5">
+              <div class="h-auto flex w-1/5">
                 <img
                   v-for="(image, key) in get(product, 'image', [])"
                   :key="key"
                   alt="..."
-                  class="flex-1 max-w-full rounded-lg shadow-lg mr-2 hover:grow hover:shadow-lg"
+                  class="object-cover flex-1 max-w-full rounded-lg shadow-lg mr-2 hover:grow hover:shadow-lg"
                   :src="`${get(
                     image,
                     'formats.large.url',

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <footer class="mx-auto py-8 border-t border-gray-400">
+    <footer class="mx-auto mt-12 py-8 border-t border-gray-400">
       <div class="container mx-auto flex px-2 md:px-8">
         <div class="w-full mx-auto flex flex-wrap">
           <div class="flex w-full lg:w-1/2 ">

@@ -10,6 +10,9 @@ module.exports = {
       fontFamily: {
         unna: ["unna", "sans-serif"],
       },
+      height: (theme) => ({
+        "screen/2": "50vh",
+      }),
     },
   },
   variants: {},

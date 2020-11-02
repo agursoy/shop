@@ -6,7 +6,7 @@
     <div v-else>
       <div
         style="background-color: #faebd738"
-        class="container mx-auto flex flex-wrap items-center justify-center p-6 mt-5 md:mt-10"
+        class="container mx-auto flex flex-wrap items-center justify-center p-6 mt-5 md:mt-10 mb-5 md:mb-10"
       >
         <nuxt-link
           v-for="(category, key) in categories"
