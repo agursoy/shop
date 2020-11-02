@@ -3,7 +3,7 @@
     <section class="relative py-10 md:py-20">
       <div class="container mx-auto px-4">
         <div class="items-center flex flex-wrap">
-          <div class="w-full md:w-4/12 ml-auto mr-auto px-4 pb-5">
+          <div class="w-full md:w-4/12 ml-auto mr-auto px-4 pb-10 md:pb-0">
             <div class="flex justify-content-center">
               <div>
                 <img
@@ -86,7 +86,7 @@
                       []
                     )"
                     :key="key"
-                    class="flex inline-block text-left pt-5"
+                    class="flex inline-block text-left pt-0 md:pt-5"
                   >
                     <span class="rounded-md shadow-sm">
                       <div class="flex">
