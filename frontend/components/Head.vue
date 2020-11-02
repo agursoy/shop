@@ -26,26 +26,36 @@
           <ul
             class="md:flex items-center justify-between text-base text-gray-700 pt-4 md:pt-0"
           >
-            <li>
+            <li v-if="get(pages, '.0.title')">
               <nuxt-link
                 class="inline-block no-underline hover:text-black hover:underline py-2 px-4"
-                :to="'/subeler'"
-                >Şubeler</nuxt-link
+                :to="get(pages, '.0.slug')"
+                >{{ get(pages, ".0.title") }}</nuxt-link
               >
             </li>
-            <li>
+            <li v-if="get(pages, '.1.title')">
               <nuxt-link
                 class="inline-block no-underline hover:text-black hover:underline py-2 px-4"
-                :to="'/biz'"
-                >Biz</nuxt-link
+                :to="get(pages, '.1.slug')"
+                >{{ get(pages, ".1.title") }}</nuxt-link
               >
             </li>
-            <li class="dropdown">
+            <li v-if="pages.length > 1" class="dropdown">
               <a class="py-2 px-4">...</a>
               <div
                 class="dropdown-menu z-10 top-0 md:absolute hidden h-auto flex md:pt-12"
               >
                 <ul class="block w-full bg-white shadow md:p-1">
+                  <template v-for="(page, index) in pages">
+                    <li v-if="index > 1" :key="index" class="py-1">
+                      <nuxt-link
+                        class="inline-block no-underline hover:text-black hover:underline py-2 px-4"
+                        :to="get(page, 'slug')"
+                      >
+                        {{ get(page, "title") }}
+                      </nuxt-link>
+                    </li>
+                  </template>
                   <li class="py-1">
                     <nuxt-link
                       class="inline-block no-underline hover:text-black hover:underline py-2 px-4"
@@ -115,12 +125,28 @@
 
 <script>
 import { mapGetters } from "vuex";
+import { get } from "@/utils/get";
 
 export default {
+  async fetch() {
+    try {
+      this.pages = await this.$strapi.$pages.find({ lite: true });
+    } catch (error) {
+      this.error = error;
+    }
+  },
+  data() {
+    return {
+      pages: [],
+    };
+  },
   computed: {
     ...mapGetters({
       numberOfItems: "cart/numberOfItems",
     }),
+  },
+  methods: {
+    get,
   },
 };
 </script>

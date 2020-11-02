@@ -5,4 +5,17 @@
  * to customize this controller
  */
 
-module.exports = {};
+const { sanitizeEntity } = require('strapi-utils');
+
+module.exports = {
+  async find(ctx) {
+    let entities;
+    if (ctx.query.lite) {
+      entities = await strapi.services.page.find(ctx.query, ['title', 'slug']);
+    } else {
+      entities = await strapi.services.page.find(ctx.query);
+    }
+
+    return entities.map(entity => sanitizeEntity(entity, { model: strapi.models.page }));
+  },
+};

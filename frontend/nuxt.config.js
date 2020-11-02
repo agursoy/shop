@@ -145,7 +145,7 @@ export default {
   },
   strapi: {
     url: process.env.API_URL || "http://localhost:1337",
-    entities: ["products", "categories"],
+    entities: ["products", "categories", "pages"],
   },
   env: {
     apiUrl: process.env.API_URL || "http://localhost:1337",
@@ -160,4 +160,16 @@ export default {
    ** See https://nuxtjs.org/api/configuration-build/
    */
   build: {},
+  /*
+   ** Custom Routes
+   */
+  router: {
+    extendRoutes(routes, resolve) {
+      routes.push({
+        name: "custom",
+        path: "*",
+        component: resolve(__dirname, "pages/custom/slug.vue"),
+      });
+    },
+  },
 };
