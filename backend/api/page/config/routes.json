@@ -26,8 +26,8 @@
     },
     {
       "method": "GET",
-      "path": "/pages/findPages",
-      "handler": "page.findPages",
+      "path": "/pages/menu",
+      "handler": "page.menu",
       "config": {
         "policies": []
       }

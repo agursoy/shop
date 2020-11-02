@@ -6,9 +6,9 @@
  */
 
 module.exports = {
-  findPages: async ctx => {
+  menu: async ctx => {
     const result = await strapi
-      .query('pages')
+      .query('page')
       .model.fetchAll({ columns: ['title', 'slug'] })
     ctx.send(result);
   }
