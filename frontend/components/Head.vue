@@ -130,7 +130,7 @@ import { get } from "@/utils/get";
 export default {
   async fetch() {
     try {
-      this.pages = await this.$strapi.$get("/pages/menu");
+      this.pages = await this.$strapi.$http.$get("/pages/menu");
     } catch (error) {
       this.error = error;
     }
