@@ -60,6 +60,15 @@
     },
     "ask_expert": {
       "type": "boolean"
+    },
+    "customer_photos": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
     }
   }
 }
