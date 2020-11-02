@@ -193,6 +193,7 @@ export default {
       error: null,
       activeImage: null,
       showValidMessage: false,
+      animationId: null,
     };
   },
   watch: {
@@ -212,16 +213,16 @@ export default {
     }),
     scrollToTop() {
       const c = document.documentElement.scrollTop || document.body.scrollTop;
-      if (c > 0) {
-        window.requestAnimationFrame(this.scrollToTop);
-        window.scrollTo(0, c - c / 20);
+      if (c > 10) {
+        this.animationId = window.requestAnimationFrame(this.scrollToTop);
+        window.scrollTo(0, c - c / 8);
+      } else {
+        window.cancelAnimationFrame(this.animationId);
       }
     },
     selectImage(image) {
       this.activeImage = image;
-      this.$nextTick(() => {
-        this.scrollToTop();
-      });
+      this.scrollToTop();
     },
     askExpert(product) {
       console.log(product);
