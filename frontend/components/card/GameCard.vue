@@ -203,6 +203,7 @@ $fs-card-title: 1.125em;
   color: $c-white;
   background-position: center center;
   background-repeat: no-repeat;
+  background-size: cover;
   opacity: 0;
   transform: translateY($defaultTranslation) scale($defaultScale);
   transform-origin: 50%, 100%;

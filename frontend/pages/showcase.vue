@@ -2,8 +2,13 @@
   <div
     class="mx-auto bg-gradient-to-r from-gray-100 via-gray-200 to-gray-300 py-10 w-full h-screen"
   >
-    <div class="f-center w-full">
-      <img src="~/static/logo.svg" />
+    <div class="f-center w-full pb-0 md:pb-6">
+      <nuxt-link
+        class="flex items-center tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl"
+        :to="'/'"
+      >
+        <img src="~/static/logo.svg" />
+      </nuxt-link>
     </div>
     <div class="f-center">
       <div class="w-5/6 md:w-1/4">
@@ -39,6 +44,18 @@ export default {
   components: {
     GameCardsStack,
   },
+  async fetch() {
+    const showcase = await this.$strapi.find("showcase");
+    const cards = get(showcase, "showcase_image", []).map((item, index) => {
+      return {
+        key: index,
+        title: item.title,
+        image: item.url,
+      };
+    });
+    this.visibleCards = JSON.parse(JSON.stringify(cards));
+    this.$store.commit("redirectShowcase", false);
+  },
   data() {
     return {
       visibleCards: [],
@@ -50,18 +67,6 @@ export default {
         this.$router.push("/");
       }
     },
-  },
-  async mounted() {
-    const showcase = await this.$strapi.find("showcase");
-    const cards = get(showcase, "showcase_image", []).map((item, index) => {
-      return {
-        key: index,
-        title: item.title,
-        image: item.url,
-      };
-    });
-    this.visibleCards = JSON.parse(JSON.stringify(cards));
-    this.$store.commit("redirectShowcase", false);
   },
   methods: {
     handleCardAccepted() {

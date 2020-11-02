@@ -170,7 +170,7 @@ export default {
       deep: true,
     },
   },
-  async mounted() {
+  async fetch() {
     try {
       this.product = await this.$strapi.$products.findOne(
         this.$route.params.id

@@ -31,7 +31,7 @@ export default {
       error: null,
     };
   },
-  async mounted() {
+  async fetch() {
     try {
       this.categories = await this.$strapi.$categories.find();
       this.category = await this.$strapi.$categories.findOne(

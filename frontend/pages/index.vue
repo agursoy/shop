@@ -33,19 +33,19 @@ export default {
     Buttons,
     Slider,
   },
+  async fetch() {
+    try {
+      this.categories = await this.$strapi.$categories.find();
+    } catch (error) {
+      this.error = error;
+    }
+  },
   data() {
     return {
       categories: [],
       apiUrl: process.env.apiUrl,
       error: null,
     };
-  },
-  async mounted() {
-    try {
-      this.categories = await this.$strapi.$categories.find();
-    } catch (error) {
-      this.error = error;
-    }
   },
   methods: {
     get,
