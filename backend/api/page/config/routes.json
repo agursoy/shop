@@ -18,16 +18,16 @@
     },
     {
       "method": "GET",
-      "path": "/pages/:id",
-      "handler": "page.findOne",
+      "path": "/pages/menu",
+      "handler": "page.menu",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/pages/menu",
-      "handler": "page.menu",
+      "path": "/pages/:id",
+      "handler": "page.findOne",
       "config": {
         "policies": []
       }
