@@ -5,11 +5,22 @@
  * to customize this controller
  */
 
+const { sanitizeEntity } = require('strapi-utils');
+
+
 module.exports = {
   menu: async ctx => {
-    const result = await strapi
-      .query('page')
-      .model.fetchAll({ columns: ['title', 'slug'] })
-    ctx.send(result);
+    let entities;
+    entities = await strapi.services.page.find(ctx.query);
+
+    return entities.map(entity => {
+      const page = sanitizeEntity(entity, {
+        model: strapi.models.page,
+      });
+
+      delete page.body;
+
+      return page;
+    });
   }
 };

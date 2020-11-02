@@ -41,7 +41,7 @@
               >
             </li>
             <li v-if="pages.length > 1" class="dropdown">
-              <a class="py-2 px-4">...</a>
+              <p class="py-2 px-4">...</p>
               <div
                 class="dropdown-menu z-10 top-0 md:absolute hidden h-auto flex md:pt-12"
               >
@@ -87,7 +87,7 @@
             />
           </svg>
           <div class="w-56 md:w-full">
-            <img src="~/static/logo.svg" />
+            <img src="~/static/logo.svg" alt="logo" />
           </div>
         </nuxt-link>
       </div>

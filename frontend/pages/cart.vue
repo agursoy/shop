@@ -66,6 +66,7 @@
             </td>
             <td class="border-b border-gray-200 text-sm">
               <img
+                alt="..."
                 class="px-1 py-1 w-48 h-32 object-cover"
                 :src="`${get(
                   item,

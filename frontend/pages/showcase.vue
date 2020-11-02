@@ -7,7 +7,7 @@
         class="flex items-center tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl"
         :to="'/'"
       >
-        <img src="~/static/logo.svg" />
+        <img src="~/static/logo.svg" alt="logo" />
       </nuxt-link>
     </div>
     <div class="f-center">

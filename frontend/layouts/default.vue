@@ -1,14 +1,14 @@
 <template>
-<div>
-  <Head />
-  <Nuxt />
-  <Footer />
-</div>
+  <div>
+    <Head />
+    <Nuxt />
+    <Footer />
+  </div>
 </template>
 
 <script>
-import Head from './../components/Head'
-import Footer from './../components/Footer'
+import Head from "./../components/Head";
+import Footer from "./../components/Footer";
 
 export default {
   components: {
@@ -20,7 +20,7 @@ export default {
       bodyAttrs: {
         style: `background-color:${process.env.backgroundColor}`,
       },
-    }
+    };
   },
-}
+};
 </script>

@@ -2,11 +2,6 @@ require("dotenv").config();
 
 export default {
   /*
-   ** Nuxt rendering mode
-   ** See https://nuxtjs.org/api/configuration-mode
-   */
-  mode: "universal",
-  /*
    ** Nuxt target
    ** See https://nuxtjs.org/api/configuration-target
    */
@@ -15,9 +10,7 @@ export default {
    ** Headers of the page
    ** See https://nuxtjs.org/api/configuration-head
    */
-
   //  <script src="https://cdn.snipcart.com/themes/v3.0.16/default/snipcart.js"></script>
-
   head: {
     title: process.env.SHOP_NAME,
     meta: [
@@ -133,6 +126,7 @@ export default {
   buildModules: [
     // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
     "@nuxtjs/tailwindcss",
+    "@nuxtjs/html-validator",
   ],
   /*
    ** Nuxt.js modules

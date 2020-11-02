@@ -11,6 +11,7 @@
           >
             <nuxt-link :to="`/products/${get(product, 'slug', '')}`">
               <img
+                alt="..."
                 class="hover:grow hover:shadow-lg h-46 md:h-56 object-scale-down"
                 :src="`${get(
                   product,
