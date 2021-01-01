@@ -17,7 +17,7 @@
       "repeatable": true,
       "component": "custom.custom-field-values"
     },
-    "Options": {
+    "options": {
       "type": "string"
     }
   }
