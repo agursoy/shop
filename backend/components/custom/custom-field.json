@@ -12,10 +12,12 @@
     "required": {
       "type": "boolean"
     },
-    "options": {
-      "type": "string"
+    "varyant": {
+      "type": "component",
+      "repeatable": true,
+      "component": "custom.custom-field-values"
     },
-    "value": {
+    "Options": {
       "type": "string"
     }
   }

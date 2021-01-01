@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_custom_custom_field_values",
+  "info": {
+    "name": "Custom_field_values",
+    "icon": "atom"
+  },
+  "options": {},
+  "attributes": {
+    "opsiyon": {
+      "type": "string"
+    },
+    "stok": {
+      "type": "integer"
+    }
+  }
+}
