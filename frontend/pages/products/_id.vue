@@ -63,18 +63,18 @@
               <p class="mt-4 text-lg leading-relaxed text-gray-600">
                 {{ get(product, "description") }}
               </p>
-              <div v-if="get(product, 'finished_stock')">
+              <div v-if="get(product, 'ask_expert')">
+                <button
+                  v-if="product.status === 'published'"
+                  class="mt-4 bg-white border border-gray-200 d hover:shadow-lg text-gray-700 font-semibold py-2 px-4 rounded shadow"
+                  @click="askExpert(product)"
+                >
+                  Satıcıya Sor
+                </button>
+              </div>
+              <div v-else-if="get(product, 'finished_stock')">
                 <div class="mt-4 text-lg leading-relaxed text-gray-600">
                   <span class="text-red-400"> Stokta tükenmiştir. </span>
-                </div>
-                <div v-if="get(product, 'ask_expert')">
-                  <button
-                    v-if="product.status === 'published'"
-                    class="mt-4 bg-white border border-gray-200 d hover:shadow-lg text-gray-700 font-semibold py-2 px-4 rounded shadow"
-                    @click="askExpert(product)"
-                  >
-                    Satıcıya Sor
-                  </button>
                 </div>
               </div>
               <div v-else>
@@ -102,22 +102,29 @@
                       </div>
                       <div class="relative">
                         <select
-                          v-model="customField.value.trim()"
+                          v-model="customField.value"
                           class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         >
-                          <option :value="''" disabled selected>
-                            Lütfen bir değer seçiniz.
-                          </option>
+                          <template v-if="customField.value === undefined">
+                            <option :value="undefined" disabled selected>
+                              Lütfen bir değer seçiniz.
+                            </option>
+                          </template>
+                          <template v-else-if="customField.value === ''">
+                            <option :value="''" disabled selected>
+                              Lütfen bir değer seçiniz.
+                            </option>
+                          </template>
                           <option
                             v-for="(item, ikey) in get(
                               customField,
-                              'options',
-                              ''
-                            ).split('|')"
+                              'varyant',
+                              []
+                            )"
                             :key="ikey"
-                            :disabled="item.includes('tükendi')"
+                            :disabled="item.stok <= 0"
                           >
-                            {{ item }}
+                            {{ item.opsiyon }} (stok: {{ item.stok }})
                           </option>
                         </select>
                         <div
@@ -225,7 +232,6 @@ export default {
       this.scrollToTop();
     },
     askExpert(product) {
-      console.log(product);
       this.$nextTick(() => {
         const image = this.get(product, "image.0.formats.small.url");
 
@@ -251,14 +257,19 @@ export default {
         window.$crisp.push([
           "do",
           "message:send",
-          ["text", "Bu ürün hakkında bilgi almak istiyorum."],
+          ["text", "Merhaba, bu ürün hakkında bilgi almak istiyorum."],
         ]);
         window.$crisp.push(["do", "chat:open"]);
       });
     },
     validateAndAddToCart(item) {
       this.get(item, "Custom_field", []).forEach((field) => {
-        if (field.required === true && field.value.trim() === "") {
+        if (
+          (field.required === true && field.value === undefined) ||
+          field.value === null ||
+          // eslint-disable-next-line valid-typeof
+          (typeof field.value === "String" && field.value.trim() === "")
+        ) {
           this.showValidMessage = true;
         }
       });
