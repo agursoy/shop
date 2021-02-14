@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_custom_menus",
+  "info": {
+    "name": "Menu",
+    "icon": "ad"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    }
+  }
+}
