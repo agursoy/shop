@@ -19,7 +19,7 @@
             />
             <div class="carousel-item absolute opacity-0">
               <div
-                class="block h-32 md:h-screen/2 w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-right max-w-full shadow-lg"
+                class="block h-56 md:h-screen/2 w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-right max-w-full shadow-lg"
                 :style="{
                   'background-image': `url(${get(
                     slide,

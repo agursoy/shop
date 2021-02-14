@@ -25,10 +25,8 @@
 import { get } from "~/utils/get";
 
 export default {
-  props: {
-    menus: Object,
-    error: Object,
-  },
+  props: ["menus", "error"],
+
   methods: {
     get,
   },
