@@ -2,6 +2,11 @@
   <section>
     <div>
       <div v-if="error">{ error }</div>
+      <div v-if="products.length === 0">
+        <div class="text-center pt-3 flex items-center justify-center">
+          <p class="text-gray-900">Yükleniyor...</p>
+        </div>
+      </div>
       <div v-else>
         <div class="container mx-auto flex items-center flex-wrap">
           <div

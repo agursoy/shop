@@ -235,9 +235,8 @@ export default {
     askExpert(product) {
       this.$nextTick(() => {
         const image = this.get(product, "image.0.formats.small.url");
-
+        const title = this.get(product, "title", "Image");
         if (image) {
-          const title = this.get(product, "title", "Image");
           window.$crisp.push([
             "do",
             "message:send",
@@ -254,6 +253,8 @@ export default {
           const url = `${process.env.shopUrl}/${this.get(product, "slug")}`;
           window.$crisp.push(["do", "message:send", ["text", url]]);
         }
+
+        window.$crisp.push(["do", "message:send", ["text", title]]);
 
         window.$crisp.push([
           "do",
