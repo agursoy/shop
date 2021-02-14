@@ -2,7 +2,6 @@
   <div>
     <Slider />
     <Buttons :menus="menus" />
-    <Products :products="get(category, 'featured', [])" :error="error" />
     <Heading :text="'Ürünler'" />
     <Products :products="products" :error="error" />
   </div>
