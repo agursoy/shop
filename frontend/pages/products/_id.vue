@@ -60,9 +60,10 @@
               <h3 class="text-3xl font-semibold">
                 {{ get(product, "title") }} - {{ get(product, "price") }} TL
               </h3>
-              <p class="mt-4 text-lg leading-relaxed text-gray-600">
-                {{ get(product, "description") }}
-              </p>
+              <!-- prettier-ignore -->
+              <p
+                class="mt-4 text-lg leading-relaxed whitespace-pre-line text-gray-600"
+              >{{ get(product, "description") }}</p>
               <div v-if="get(product, 'ask_expert')">
                 <button
                   v-if="product.status === 'published'"
