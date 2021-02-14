@@ -150,6 +150,13 @@
                     Lütfen tüm zorunlu ayarları giriniz.
                   </p>
                 </div>
+                <!-- prettier-ignore -->
+                <div
+                  v-if="categoryNote"
+                  class="block whitespace-pre-line mt-6 bg-gray-200 p-4 rounded-md inline-block"
+                >Notlar:
+                {{ categoryNote }}
+                </div>
                 <ul class="list-none mt-6">
                   <li class="py-2">
                     <div class="flex items-center">
@@ -191,6 +198,11 @@ export default {
         this.$route.params.id
       );
       this.activeImage = this.get(this.product.image, ".0.", null);
+      this.categoryNote = this.get(
+        this.product,
+        "categories.0.category_notes",
+        ""
+      );
     } catch (error) {
       this.error = error;
     }
@@ -198,6 +210,7 @@ export default {
   data() {
     return {
       product: null,
+      categoryNote: null,
       error: null,
       activeImage: null,
       showValidMessage: false,
