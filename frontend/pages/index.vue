@@ -35,7 +35,12 @@ export default {
   },
   async fetch() {
     try {
-      this.categories = await this.$strapi.$categories.find();
+      const homePageCategories = await this.$strapi.find("homepage-categories");
+      for (const element of this.get(homePageCategories, "categories", [])) {
+        const cat = await this.$strapi.$categories.find({ slug: element.slug });
+        this.categories.push(cat[0]);
+      }
+
       this.menus = await this.$strapi.find("main-menu");
     } catch (error) {
       this.error = error;

@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/homepage-categories",
+      "handler": "homepage-categories.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/homepage-categories",
+      "handler": "homepage-categories.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/homepage-categories",
+      "handler": "homepage-categories.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
