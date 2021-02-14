@@ -18,6 +18,9 @@
     },
     "featured": {
       "collection": "product"
+    },
+    "category_notes": {
+      "type": "text"
     }
   }
 }
