@@ -1,7 +1,7 @@
 <template>
   <div>
     <Slider />
-    <Buttons :categories="categories" />
+    <Buttons :menus="menus" />
     <Heading :text="'Öne Çıkanlar'" />
     <Products :products="get(category, 'featured', [])" :error="error" />
     <Heading :text="'Ürünler'" />
@@ -25,6 +25,7 @@ export default {
   },
   data() {
     return {
+      menus: [],
       categories: [],
       category: {},
       products: [],
@@ -33,6 +34,7 @@ export default {
   },
   async fetch() {
     try {
+      this.menus = await this.$strapi.find("main-menu");
       this.categories = await this.$strapi.$categories.find();
       this.category = await this.$strapi.$categories.findOne(
         this.$route.params.id

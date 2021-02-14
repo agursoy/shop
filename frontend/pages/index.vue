@@ -1,7 +1,7 @@
 <template>
   <div>
     <Slider />
-    <Buttons :categories="categories" :error="error" />
+    <Buttons :menus="menus" :error="error" />
     <div v-for="(category, key) in categories" :key="key">
       <div v-if="get(category, 'featured.length', 0) > 0" class="mt-2">
         <Heading :text="get(category, 'name')" />
@@ -36,12 +36,14 @@ export default {
   async fetch() {
     try {
       this.categories = await this.$strapi.$categories.find();
+      this.menus = await this.$strapi.find("main-menu");
     } catch (error) {
       this.error = error;
     }
   },
   data() {
     return {
+      menus: [],
       categories: [],
       apiUrl: process.env.apiUrl,
       error: null,
