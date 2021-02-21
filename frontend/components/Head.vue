@@ -29,7 +29,7 @@
             <li v-if="get(pages, '.0.title')">
               <nuxt-link
                 class="inline-block no-underline hover:text-black hover:underline py-2 px-4"
-                :to="get(pages, '.0.slug')"
+                :to="`/${get(pages, '.0.slug')}`"
                 >{{ get(pages, ".0.title") }}</nuxt-link
               >
             </li>

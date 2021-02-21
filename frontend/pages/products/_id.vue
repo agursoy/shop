@@ -64,6 +64,12 @@
               <p
                 class="mt-4 text-lg leading-relaxed whitespace-pre-line text-gray-600"
               >{{ get(product, "description") }}</p>
+              <!-- prettier-ignore -->
+              <div
+                  v-if="categoryNote"
+                  class="block whitespace-pre-line mt-6 bg-gray-200 p-4 rounded-md inline-block"
+                >{{ categoryNote }}
+                </div>
               <div v-if="get(product, 'ask_expert')">
                 <button
                   v-if="product.status === 'published'"
@@ -154,8 +160,7 @@
                 <div
                   v-if="categoryNote"
                   class="block whitespace-pre-line mt-6 bg-gray-200 p-4 rounded-md inline-block"
-                >Notlar:
-                {{ categoryNote }}
+                >{{ categoryNote }}
                 </div>
                 <ul class="list-none mt-6">
                   <li class="py-2">
@@ -279,13 +284,16 @@ export default {
     },
     validateAndAddToCart(item) {
       this.get(item, "Custom_field", []).forEach((field) => {
-        if (
-          (field.required === true && field.value === undefined) ||
-          field.value === null ||
-          // eslint-disable-next-line valid-typeof
-          (typeof field.value === "String" && field.value.trim() === "")
-        ) {
-          this.showValidMessage = true;
+        if (field.required === true) {
+          if (field.value === undefined) {
+            this.showValidMessage = true;
+          } else if (field.value === null) {
+            this.showValidMessage = true;
+          } else if (field.value === "") {
+            this.showValidMessage = true;
+          } else if (field.value === " ") {
+            this.showValidMessage = true;
+          }
         }
       });
       if (!this.showValidMessage) {
