@@ -2,6 +2,8 @@
   <div>
     <Slider />
     <Buttons :menus="menus" />
+    <Heading :text="'Öne Çıkanlar'" />
+    <Products :products="get(category, 'featured', [])" :error="error" />
     <Heading :text="'Ürünler'" />
     <Products :products="products" :error="error" />
   </div>
